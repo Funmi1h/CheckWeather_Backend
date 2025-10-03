@@ -1,7 +1,7 @@
 .env
 .env.local
 
-nodes_modules
+node_modules
 dist
 .nyc_output
 /coverage   

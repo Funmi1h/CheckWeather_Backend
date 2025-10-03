@@ -2,10 +2,28 @@ import * as config from './utils.js';
 import  * as storageConfig from "./storage.js";
 
 
+
+
+document.getElementById("toggle-dark-mode").addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+  if(body.classList.contains('dark-mode')){
+    localStorage.setItem('mode', 'dark');
+  }else{
+    localStorage.setItem('theme', ' ');
+  }
+});
+
+
 document.addEventListener('DOMContentLoaded', () =>{
-    config.setTheme()
+    let theme = localStorage.getItem('theme');
+    if (theme = 'dark-mode') {
+        document.body.classList.add('dark-mode')
+    } else{
+        document.body.classList.remove('dark-mode')
+    }
 
 })
+
     
 config.btnSearchCity.addEventListener('click', ()=>{
     config.askVille.style.display = 'flex';
@@ -86,6 +104,4 @@ config.btnDeleteHistorique.addEventListener('click',async ()=>{
 
 
 
-document.getElementById("toggle-dark-mode").addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-});
+

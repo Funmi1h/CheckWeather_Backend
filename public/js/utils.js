@@ -76,15 +76,7 @@ function setUpForm(form){
 };
 
 
-export function setTheme(){
-    let theme =  document.body.className;
-    localStorage.setItem('theme', theme) ;// Sauvegarder le theme dans le localStorage
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme.trim() === "dark"){
-        body.classList.add('dark-mode');
-    }
 
-}
 
 export function setNameVille(nom){
     nameVille = nom;
@@ -93,3 +85,5 @@ export function setNameVille(nom){
 export function getNameVille(){
     return nameVille;
 }
+
+export const API_URL  = 'https://checkweather-backend.onrender.com/'

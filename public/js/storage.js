@@ -64,7 +64,7 @@ export async function addNote(form){
 
         // Envoie de l'objet contenant la note au serveur
         try{
-            const response = await fetch('http://localhost:3000/notes', {
+            const response = await fetch(`${config.API_URL}`, {
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/json'
@@ -92,12 +92,7 @@ export async function addNote(form){
         showBtnDeleteHistorique()
         let dateSansHeure = config.getDate().split("à")[0]; 
 
-        // Supprimer les anciennes entrées du jour pour une mm ville
-        
-       /* let historiqueNote = await storageConfig.loadNoteFromBackend()
-        historiqueNote = historiqueNote.filter(entry =>{
-            let entryDateSansHeure = entry.date.split("à")[0]
-            return !(entry.ville === config.nameVille && entryDateSansHeure === dateSansHeure);*/
+       
     });
 
 }
@@ -108,7 +103,7 @@ export async function addNote(form){
 
 async function loadNoteFromBackend() {
     try{
-        const response = await fetch('http://localhost:3000/notes');
+        const response = await fetch(`${config.API_URL}/notes`);
         if(!response.ok){
             throw new Error(`Erreur HTTP: ${response.status}`);
         };
@@ -130,7 +125,7 @@ async function loadNoteFromBackend() {
 
 export async function deleteNoteFromHistorique(id){
     try{
-        await fetch(`/notes/${id}`, {method: 'DELETE'});
+        await fetch(`${config.API_URL}/notes/${id}`, {method: 'DELETE'});
     }catch(e){
         alert('erreur lors de la suppresion de la note')
     }
@@ -175,7 +170,7 @@ async function showHistorique(){
             if (e.target === btnDeleteCard) return;
             if (!detailsVisible) {
                 // Récupère les détails depuis le serveur
-                const response = await fetch(`/notes/${entry.id}`);
+                const response = await fetch(`${config.API_URL}/notes/${entry.id}`);
                 if (response.ok) {
                     const note = await response.json();
                     detailsDiv = document.createElement('div');
