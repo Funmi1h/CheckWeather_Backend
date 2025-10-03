@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckWeather</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/dark.css">
+
+</head>
+<body>
+    <form action="" method="get" class="ask-ville">
+            
+            <div class="container-champ">
+                <label for="ville" >Rechercher une ville</label>
+                <input type="text" name="ville" id="ville">
+            </div>
+
+            <button type="submit" id="ask-ville-submit">Voir la météo</button>
+    </form>
+
+    <div class="loader">
+        <span>Chargement de la météo...</span>
+        <span class="spin-span"></span>
+    </div>
+
+    <div class="loader-error">
+        <span class="span-error">Erreur...</span>
+        <span class="span-city-notfound">Nous n'avons pas trouvé votre ville </span>
+        <button class="retry">Réessayer</button>
+    </div>
+
+    <div class="main-wrapper">
+        <button id="toggle-dark-mode">🌙 </button>
+
+
+
+        
+        <div class="container">
+            <div class="buttons-move">
+                <button class="search-ville">Rechercher une autre ville <ion-icon name="search-outline"></ion-icon></button>
+                <button id="btn-historique">Historique de vos notes</button>
+
+            </div>
+            
+            <div class="show-weather">
+
+
+                <!--Affichage des informations météorologiques pertinentes :
+                température, icône météorologique représentative, et description textuelle des conditions.-->
+                <div class="infos-meteo">
+
+                    <!--température, icône météorologique représentative-->
+                    <div class="temperature-icone-ville">
+                        <!--Ville-->
+                        <p class="ville"></p>
+                        <div class="temperature-icone">
+                            <p class="temperature"></p>
+                            <img class="icone">
+                        </div>
+                    
+                    </div>
+
+                    <!--description textuelle des conditions-->
+                    <div>
+                        <p class="description"></p>
+                        <div class="min-max-temperature">
+                            <p class="min-temperature"></p>
+                            <p class="max-temperature"></p>
+                        </div>
+                    </div>
+
+                        <!--Ajouter une note-->
+                    <div class="add-note">
+                        <!--Une icone de crayon a cote-->
+                        <button type="button" id="btn-add-note">Ecrire une note</button>
+                        <form action="" class="add-note-form">
+                            <ion-icon name="close-outline" class="annuler-form"></ion-icon>
+                            <div class="container-champ-textarea">
+                                <label for="note-texte">Ta note</label>
+                                <textarea name="note-texte" id="note-texte"></textarea>
+                            </div>
+                            <button type="submit" id="submit-note"><ion-icon name="checkmark-outline"></ion-icon></button>
+                        </form>
+                        <div class="container-paragraphe-note">
+                            <div class="note-chevron">
+                                <div class="note-box">
+                                    <p class="paragraphe-note-texte"></p>
+                                    <div class="note-date"></div>
+                                </div>
+                                <ion-icon name="chevron-down-outline" class="dropdown"></ion-icon>
+                            </div>
+
+                            
+                            <div class="options-box">
+                                <ion-icon name="pencil-outline" aria-label="Modifier" class="btn-modifiy"></ion-icon>
+                                <ion-icon name="trash-outline" aria-label="Supprimer" class="btn-delete"></ion-icon>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                
+                <div class="historique-and-close" >
+                    <ion-icon name="close-outline" class="close-btn"></ion-icon>
+                    <div class="historique-container">
+                    </div>
+                    <div class="btn-delete-historique">
+                        <p>Vider l'historique
+                        <ion-icon name="trash-outline" aria-label="Supprimer" class=""></ion-icon>
+
+                        </p>
+                    </div>
+
+                </div>
+               
+
+            </div>
+
+            
+        </div>
+        
+        
+    </div>
+
+    
+
+
+<!--Bibliotheque ionicone-->
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

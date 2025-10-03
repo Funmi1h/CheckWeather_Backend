@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1759500832220,
+    "ville": "Abomey-Calavi",
+    "temperature": "29°",
+    "icone": "https://openweathermap.org/img/wn/04d@2x.png",
+    "description": "Nuageux",
+    "note": "dfghjk",
+    "date": "03/10/2025 à 15: 13"
+  },
+  {
+    "id": 1759500852956,
+    "ville": "Abomey-Calavi",
+    "temperature": "29°",
+    "icone": "https://openweathermap.org/img/wn/04d@2x.png",
+    "description": "Nuageux",
+    "note": "fghjkl",
+    "date": "03/10/2025 à 15: 14"
+  },
+  {
+    "id": 1759500863524,
+    "ville": "Abomey-Calavi",
+    "temperature": "29°",
+    "icone": "https://openweathermap.org/img/wn/04d@2x.png",
+    "description": "Nuageux",
+    "note": "plljhgfdd",
+    "date": "03/10/2025 à 15: 14"
+  }
+]

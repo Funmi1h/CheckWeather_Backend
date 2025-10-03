@@ -1,0 +1,91 @@
+import * as config from './utils.js';
+import  * as storageConfig from "./storage.js";
+
+
+document.addEventListener('DOMContentLoaded', () =>{
+    config.setTheme()
+
+})
+    
+config.btnSearchCity.addEventListener('click', ()=>{
+    config.askVille.style.display = 'flex';
+    document.querySelector('.main-wrapper').style.display = 'none'
+
+})
+
+if (!config.noteTexte.textContent){
+    config.btnAddNote.style.display = 'none';
+    config.containerNote.style.display = 'flex';
+};
+config.setUpForm(config.askVille);
+
+
+
+// ajouter une note
+storageConfig.addNote;
+config.btnAddNote.addEventListener('click', () => storageConfig.addNote(config.formAddNote))
+
+config.annulerFormAddNote.addEventListener('click', ()=>{
+    config.formAddNote.style.display = 'none';
+    config.btnAddNote.style.display = 'flex';
+    config.setNameVille(config.nameVille)
+    storageConfig.loadNoteDuJour(config.getNameVille)
+})
+
+storageConfig.showHistorique()
+
+
+// event au click sur le btn historique
+config.btnHistorique.addEventListener('click', ()=> {
+    document.querySelector('.historique-and-close').style.display= 'block';
+    config.historiqueContainer.style.display = 'flex';
+    
+})
+// Affichage du boutton pour fermer
+config.closeBtn.addEventListener('click', ()=>{
+    document.querySelector('.historique-and-close').style.display = 'none';
+} )
+
+// Pour supprimer la note c'est bon on n'y touche plus en dessous de la météo
+function deleteNote(){
+    let textarea  = document.querySelector('[name="note-texte"]');
+    textarea.value = ""
+    config.noteTexte.textContent = "";
+    config.containerNote.style.display = 'none';
+    config.btnAddNote.style.display = 'block';
+}
+document.querySelector('.btn-delete').addEventListener('click', ()=> deleteNote());
+
+// Pour modifier la note c'est bon n'y touche plus en dessous de la météo
+function modifyNote(){
+    document.querySelector('.container-paragraphe-note').style.display = "none";
+    config.formAddNote.style.display = 'flex';
+    addNote(config.formAddNote);
+}
+document.querySelector('.btn-modifiy').addEventListener('click', ()=> modifyNote());
+
+//Pour afficher plus d'options a coté de la note 
+config.moreOptionsBtn.addEventListener('click', ()=>{
+    document.querySelector('.options-box').classList.toggle('show');
+    config.moreOptionsBtn.classList.toggle('turn');
+});
+
+//Supprimer l'historique
+config.btnDeleteHistorique.addEventListener('click',async ()=>{
+
+    config.historiqueContainer.innerHTML = "";
+    config.historiqueContainer.textContent = "L'historique est vide"
+    await fetch('/notes', {method: 'DELETE'})
+    storageConfig.showBtnDeleteHistorique()
+})
+
+
+
+
+
+
+
+
+document.getElementById("toggle-dark-mode").addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+});

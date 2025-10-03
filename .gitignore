@@ -1,0 +1,16 @@
+.env
+.env.local
+
+nodes_modules
+dist
+.nyc_output
+/coverage   
+
+.log
+npm-debug.log
+yarn-debug.log*
+yarn-error.log*
+.npm
+
+.DS_Store
+Thumbs.db
