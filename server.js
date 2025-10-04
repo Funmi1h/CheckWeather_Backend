@@ -2,7 +2,8 @@ const express = require('express');// importer express
 const app = express(); // créer une instance de l'application express
 app.use(express.json()); // Pour analyser le corps des requetes json les notes par exemple
 const port = process.env.PORT || 3000;// le port sur lequel le serveur écoute
-
+const cors = require('cors');
+app.use(cors())
 
 // importer le module fs pour lire et ecrire dans le fichier notes.json
 const fs = require('fs').promises
@@ -127,3 +128,4 @@ app.get('/notes/:id', async(req, res)=>{
 app.listen(3000, ()=>{
     console.log('Le serveur est lancé sur le port 3000')
 });
+

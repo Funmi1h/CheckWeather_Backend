@@ -64,7 +64,7 @@ export async function addNote(form){
 
         // Envoie de l'objet contenant la note au serveur
         try{
-            const response = await fetch(`${config.API_URL}`, {
+            const response = await fetch(`${config.API_URL}/notes`, {
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/json'
@@ -226,10 +226,7 @@ export async function loadNoteDuJour(villeRecherchee){
     }
 };
 
-export async function getSpecificNote(id) {
 
-    
-}
 
 
 export {loadNoteFromBackend};
