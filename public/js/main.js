@@ -78,7 +78,7 @@ document.querySelector('.btn-delete').addEventListener('click', ()=> deleteNote(
 function modifyNote(){
     document.querySelector('.container-paragraphe-note').style.display = "none";
     config.formAddNote.style.display = 'flex';
-    addNote(config.formAddNote);
+    storageConfig.addNote(config.formAddNote);
 }
 document.querySelector('.btn-modifiy').addEventListener('click', ()=> modifyNote());
 
