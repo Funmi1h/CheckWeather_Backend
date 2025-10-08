@@ -133,8 +133,7 @@ export const API_URL  = 'https://checkweather-backend.onrender.com'
 export async function modePreference(themeValue){
     let preferences = { mode: themeValue }
     try{
-        // NOTE : On utilise un chemin relatif '/mode' car le serveur est sur la même origine
-    const response = await fetch ('/mode', { 
+    const response = await fetch (`${API_URL}/mode`, { 
     method: "PUT",
     headers: {
         'Content-Type': "application/json" 
@@ -144,7 +143,6 @@ export async function modePreference(themeValue){
 
          if (!response.ok){
          console.error(`Erreur lors de la sauvegarde du mode: ${response.status}`)
-        // On peut lancer une erreur pour gérer cela ailleurs si nécessaire
              throw new Error("Erreur de sauvegarde côté serveur.");
     }
      console.log("Mode sauvegardé avec succès sur le serveur:", themeValue)
