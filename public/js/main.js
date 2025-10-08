@@ -8,7 +8,7 @@ document.getElementById("toggle-dark-mode").addEventListener("click", async () =
     document.body.classList.toggle("dark-mode");
 
     // Déterminer l'état après le toggle
-    const newTheme = document.body.classList.contains('dark-mode') ? 'dark-mode' : '';
+    const newTheme = document.body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
     
     // Enregistrement de la préférence sur le serveur
     await config.modePreference(newTheme);
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () =>{
 try {
      let response = await fetch (`${config.API_URL}/mode`); 
      let data = await response.json();
-     let theme = data[0].mode;
+     let theme = JSON.parse(data).mode;
         
         // CORRECTION CRITIQUE : Utiliser '===' pour la comparaison, pas '=' pour l'affectation
     if (theme === 'dark-mode') { 
