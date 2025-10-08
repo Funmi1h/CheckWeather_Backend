@@ -27,6 +27,7 @@ export async function addNote(form){
     config.containerNote.style.display = 'none'
     config.btnAddNote.style.display = 'none';
     form.style.display = 'flex';
+    form.getElementById('note-texte').textContent = " "
 
     form.addEventListener('submit', async (event)=>{
         event.preventDefault();

@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', async () =>{
     
 config.btnSearchCity.addEventListener('click', ()=>{
     config.askVille.style.display = 'flex';
+    
     document.querySelector('.main-wrapper').style.display = 'none'
 
 })
