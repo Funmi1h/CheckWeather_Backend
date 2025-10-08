@@ -131,9 +131,10 @@ app.put('/mode', async(req, res)=>{
     const preferences = req.body;
     try{
         // Lecture du fichier mode et stockage de son contenu dans une variable
-        let data = await fs.readFile(modeFilePath, 'utf8');
-        data.push(preferences);
-        await fs.writeFile(modeFilePath, null, 2);
+        //let data = await fs.readFile(modeFilePath, 'utf8');
+        //data.push(preferences);
+        //Ecraser le contenu du fichier mode.json et ajouter un nouveau contenu
+        await fs.writeFile(modeFilePath, JSON.stringify(preferences, null, 2));
         res.status(201).json({message: "Le mode a bien été enregistrée"})
 
 
