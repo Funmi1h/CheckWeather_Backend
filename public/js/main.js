@@ -1,21 +1,21 @@
 import * as config from './utils.js';
 import  * as storageConfig from "./storage.js";
+import { application, json } from 'express';
 
 
 
 
-document.getElementById("toggle-dark-mode").addEventListener("click", () => {
+document.getElementById("toggle-dark-mode").addEventListener("click", async () => {
   document.body.classList.toggle("dark-mode");
-  if(body.classList.contains('dark-mode')){
-    localStorage.setItem('mode', 'dark');
-  }else{
-    localStorage.setItem('theme', ' ');
-  }
+
+ config.modePreference()
 });
 
 
-document.addEventListener('DOMContentLoaded', () =>{
-    let theme = localStorage.getItem('theme');
+document.addEventListener('DOMContentLoaded', async () =>{
+    let response = await fetch (`${config.API_URL}/mode`)
+    let data = await response.json();
+    let theme = data.mode;
     if (theme = 'dark-mode') {
         document.body.classList.add('dark-mode')
     } else{

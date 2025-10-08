@@ -87,3 +87,44 @@ export function getNameVille(){
 }
 
 export const API_URL  = 'https://checkweather-backend.onrender.com'
+export async  function modePreference(){
+     if(body.classList.contains('dark-mode')){
+    let preferences = {mode: 'dark-mode'}
+    try{
+        await fetch ('/preferences/mode', {
+        method: "PUT",
+        headers: {
+          'Content-Type': "application/json" 
+        },
+        body: JSON.stringify(preferences)
+    })
+    if (!response.ok){
+        console.log(`Erreur lors de la sauvegarde de la note${response.status}`)
+    }
+    console.log("Mode sauvegardée avec succes")
+
+    }catch(error){
+        console.error(`Erreur de connexion au serveur`)
+    }
+    
+
+  }else{
+     let preferences = {mode: ''}
+    try{
+        await fetch (`${config.API_URL}/mode`, {
+        method: "PUT",
+        headers: {
+          'Content-Type': "application/json" 
+        },
+        body: JSON.stringify(preferences)
+    })
+    if (!response.ok){
+        console.log(`Erreur lors de la sauvegarde de la note${response.status}`)
+    }
+    console.log("Mode sauvegardée avec succes")
+
+    }catch(error){
+        console.error(`Erreur de connexion au serveur`)
+    }
+  }
+}

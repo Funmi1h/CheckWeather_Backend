@@ -16,6 +16,9 @@ const path = require('path');
 
 // Le chemin absolue vers le fichier json qui va contenir les notes
 const noteFilePath = path.join(__dirname , 'notes.json')
+// Le chemin absolue vers le fichier json qui va contenir le mode de préférence de l'utilisateur 
+const modeFilePath = path.json(__dirname, 'mode.json');
+
 
 // Servir le fichier html a la racine
 app.get('/', (req, res) =>{
@@ -123,6 +126,37 @@ app.get('/notes/:id', async(req, res)=>{
 })
 
 
+// Pour gérer les préferences en mode sombre ou clair
+app.put('/mode', async(req, res)=>{
+    const preferences = req.body;
+    try{
+        // Lecture du fichier mode et stockage de son contenu dans une variable
+        let data = await fs.readFile(modeFilePath, 'utf8');
+        data.push(preferences);
+        await fs.writeFile(modeFilePath, null, 2);
+        res.status(201).json({message: "Le mode a bien été enregistrée"})
+
+
+    } catch(error){
+        console.error(error);
+        res.status(500).json({message: "Erreur serveur"});
+
+    }
+
+})
+
+app.get('/mode', async (req, res)=>{
+    try{
+        const data = await fs.readFile(modeFilePath, 'utf8');
+        const mode = JSON.parse(data);
+        res.status(200).json({message: "Note récupérée avec succes "})
+    }catch(error){
+        console.error(error);
+        res.status(500).json({message: "Erreur serveur"})
+
+    }
+
+})
 
 // Pour que l'app express soit active et réponde a tt les requetes 
 app.listen(3000, ()=>{
