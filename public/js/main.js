@@ -1,8 +1,8 @@
 import * as config from './utils.js';
 import  * as storageConfig from "./storage.js";
+config.modePreference;
 
-
-
+/*
 
 document.getElementById("toggle-dark-mode").addEventListener("click", async () => {
   document.body.classList.toggle("dark-mode");
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () =>{
         document.body.classList.remove('dark-mode')
     }
 
-})
+})*/
 
     
 config.btnSearchCity.addEventListener('click', ()=>{

@@ -87,7 +87,7 @@ export function getNameVille(){
 }
 
 export const API_URL  = 'https://checkweather-backend.onrender.com'
-export async  function modePreference(){
+/*export async  function modePreference(){
      if(body.classList.contains('dark-mode')){
     let preferences = {mode: 'dark-mode'}
     try{
@@ -127,4 +127,62 @@ export async  function modePreference(){
         console.error(`Erreur de connexion au serveur`)
     }
   }
+}*/
+
+
+export async function modePreference(themeValue){
+    let preferences = { mode: themeValue }
+    try{
+        // NOTE : On utilise un chemin relatif '/mode' car le serveur est sur la même origine
+    const response = await fetch ('/mode', { 
+    method: "PUT",
+    headers: {
+        'Content-Type': "application/json" 
+         },
+         body: JSON.stringify(preferences)
+         });
+
+         if (!response.ok){
+         console.error(`Erreur lors de la sauvegarde du mode: ${response.status}`)
+        // On peut lancer une erreur pour gérer cela ailleurs si nécessaire
+             throw new Error("Erreur de sauvegarde côté serveur.");
+    }
+     console.log("Mode sauvegardé avec succès sur le serveur:", themeValue)
+
+    }catch(error){
+    console.error(`Erreur de connexion au serveur ou de traitement de la requête:`, error)
 }
+}
+
+
+// 1. Événement au clic pour basculer le mode sombre
+document.getElementById("toggle-dark-mode").addEventListener("click", async () => {
+    document.body.classList.toggle("dark-mode");
+
+    // Déterminer l'état après le toggle
+    const newTheme = document.body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
+    
+    // Enregistrement de la préférence sur le serveur
+    await modePreference(newTheme);
+});
+
+
+// 2. Chargement de la préférence au démarrage de la page
+document.addEventListener('DOMContentLoaded', async () =>{
+try {
+        // NOTE : On utilise un chemin relatif '/mode'
+     let response = await fetch ('/mode'); 
+     let data = await response.json();
+     let theme = data.mode;
+        
+        // CORRECTION CRITIQUE : Utiliser '===' pour la comparaison, pas '=' pour l'affectation
+    if (theme === 'dark-mode') { 
+     document.body.classList.add('dark-mode')
+         } else{
+            document.body.classList.remove('dark-mode')
+        }
+    } catch (error) {
+        console.error("Impossible de charger la préférence de mode au démarrage:", error);
+        // Si la requête échoue, on laisse le mode par défaut (clair)
+    }
+});
