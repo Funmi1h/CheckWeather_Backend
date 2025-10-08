@@ -1,6 +1,6 @@
 import * as config from './utils.js';
 import  * as storageConfig from "./storage.js";
-config.modePreference;
+config.modePreference();
 
 /*
 
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () =>{
     
 config.btnSearchCity.addEventListener('click', ()=>{
     config.askVille.style.display = 'flex';
-    
+
     document.querySelector('.main-wrapper').style.display = 'none'
 
 })
