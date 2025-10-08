@@ -131,7 +131,7 @@ export const API_URL  = 'https://checkweather-backend.onrender.com'
 
 
 export async function modePreference(themeValue){
-    let preferences = { mode: themeValue }
+    let preferences = { "mode": themeValue }
     try{
     const response = await fetch (`${API_URL}/mode`, { 
     method: "PUT",
