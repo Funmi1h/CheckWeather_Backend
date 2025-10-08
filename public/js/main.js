@@ -11,7 +11,7 @@ document.getElementById("toggle-dark-mode").addEventListener("click", async () =
     const newTheme = document.body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
     
     // Enregistrement de la préférence sur le serveur
-    await modePreference(newTheme);
+    await config.modePreference(newTheme);
 });
 
 
