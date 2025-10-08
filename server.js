@@ -17,7 +17,7 @@ const path = require('path');
 // Le chemin absolue vers le fichier json qui va contenir les notes
 const noteFilePath = path.join(__dirname , 'notes.json')
 // Le chemin absolue vers le fichier json qui va contenir le mode de préférence de l'utilisateur 
-const modeFilePath = path.json(__dirname, 'mode.json');
+const modeFilePath = path.join(__dirname, 'mode.json');
 
 
 // Servir le fichier html a la racine
