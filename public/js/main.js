@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () =>{
 try {
      let response = await fetch (`${config.API_URL}/mode`); 
      let data = await response.json();
-     let theme = data.mode;
+     let theme = data[0].mode;
         
         // CORRECTION CRITIQUE : Utiliser '===' pour la comparaison, pas '=' pour l'affectation
     if (theme === 'dark-mode') { 
