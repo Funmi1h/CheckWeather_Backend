@@ -153,36 +153,3 @@ export async function modePreference(themeValue){
     console.error(`Erreur de connexion au serveur ou de traitement de la requête:`, error)
 }
 }
-
-
-// 1. Événement au clic pour basculer le mode sombre
-document.getElementById("toggle-dark-mode").addEventListener("click", async () => {
-    document.body.classList.toggle("dark-mode");
-
-    // Déterminer l'état après le toggle
-    const newTheme = document.body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
-    
-    // Enregistrement de la préférence sur le serveur
-    await modePreference(newTheme);
-});
-
-
-// 2. Chargement de la préférence au démarrage de la page
-document.addEventListener('DOMContentLoaded', async () =>{
-try {
-        // NOTE : On utilise un chemin relatif '/mode'
-     let response = await fetch ('/mode'); 
-     let data = await response.json();
-     let theme = data.mode;
-        
-        // CORRECTION CRITIQUE : Utiliser '===' pour la comparaison, pas '=' pour l'affectation
-    if (theme === 'dark-mode') { 
-     document.body.classList.add('dark-mode')
-         } else{
-            document.body.classList.remove('dark-mode')
-        }
-    } catch (error) {
-        console.error("Impossible de charger la préférence de mode au démarrage:", error);
-        // Si la requête échoue, on laisse le mode par défaut (clair)
-    }
-});

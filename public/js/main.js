@@ -8,7 +8,7 @@ document.getElementById("toggle-dark-mode").addEventListener("click", async () =
     document.body.classList.toggle("dark-mode");
 
     // Déterminer l'état après le toggle
-    const newTheme = document.body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
+    const newTheme = document.body.classList.contains('dark-mode') ? 'dark-mode' : '';
     
     // Enregistrement de la préférence sur le serveur
     await config.modePreference(newTheme);
@@ -18,8 +18,7 @@ document.getElementById("toggle-dark-mode").addEventListener("click", async () =
 // 2. Chargement de la préférence au démarrage de la page
 document.addEventListener('DOMContentLoaded', async () =>{
 try {
-        // NOTE : On utilise un chemin relatif '/mode'
-     let response = await fetch ('/mode'); 
+     let response = await fetch (`${config.API_URL}/mode`); 
      let data = await response.json();
      let theme = data.mode;
         
